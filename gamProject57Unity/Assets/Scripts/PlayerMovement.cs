@@ -17,10 +17,13 @@ public class PlayerMovement : MonoBehaviour
     Vector3 cameraAngleEuler;
     Quaternion angleToRotateTo;
 
+
+    Animator playerAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,19 +33,29 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.W))
         {
             rb.AddForce(transform.forward * speed);
+            playerAnimator.SetBool("isRunning", true);
         }
-        if(Input.GetKey(KeyCode.S))
+        else if(Input.GetKey(KeyCode.S))
         {
             rb.AddForce(-transform.forward * speed);
+            playerAnimator.SetBool("isRunning", true);
         }
-        if(Input.GetKey(KeyCode.A))
+        else if(Input.GetKey(KeyCode.A))
         {
             rb.AddForce(-transform.right * speed);
+            playerAnimator.SetBool("isRunning", true);
         }
-        if(Input.GetKey(KeyCode.D))
+        else if(Input.GetKey(KeyCode.D))
         {
             rb.AddForce(transform.right * speed);
+            playerAnimator.SetBool("isRunning", true);
         }
+        else
+        {
+            playerAnimator.SetBool("isRunning", false);
+        }
+
+        
 
         //Rotate model with Camera
 
@@ -59,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         characterModel.transform.rotation = Quaternion.Slerp(characterModel.transform.rotation, angleToRotateTo, characterRotationSpeed);
         
 
-        Debug.Log(cameraAngle.eulerAngles);
+        //Debug.Log(cameraAngle.eulerAngles);
 
 
 
