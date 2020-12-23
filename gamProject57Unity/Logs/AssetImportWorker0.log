@@ -336,3 +336,75 @@ Received Import Request.
 Start importing Assets/HoverScript.cs using Guid(0f5b24ebb87b3413faeae2f87293780f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae819f9f1c09fa4b0a3c39499747d5ab') in 0.010348 seconds
   Import took 0.016124 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 827.664462 seconds.
+  path: Assets/Kai's Folder
+  artifactKey: Guid(c0f43f6f44bca4a119d00d01c8d6ab6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Kai's Folder using Guid(c0f43f6f44bca4a119d00d01c8d6ab6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8c5c2979f4b8100a4c64f3eb06f4c67') in 0.006935 seconds
+  Import took 0.012308 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.071433 seconds.
+  path: Assets/Kai's Folder/Room 1.blend
+  artifactKey: Guid(0e48749eca67442c284096481685387b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Kai's Folder/Room 1.blend using Guid(0e48749eca67442c284096481685387b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b39932457367a3f9026be6ff2097d4a8') in 0.986624 seconds
+  Import took 0.992344 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.043977 seconds.
+  path: Assets/Kai's Folder/Room 1.blend
+  artifactKey: Guid(0e48749eca67442c284096481685387b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Kai's Folder/Room 1.blend using Guid(0e48749eca67442c284096481685387b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b39932457367a3f9026be6ff2097d4a8') in 0.771664 seconds
+  Import took 0.776862 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 79.911652 seconds.
+  path: Assets/Kai's Folder/Room 1.blend
+  artifactKey: Guid(0e48749eca67442c284096481685387b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Kai's Folder/Room 1.blend using Guid(0e48749eca67442c284096481685387b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2124d73d4d5c7edba3b135fbe64978b4') in 0.901059 seconds
+  Import took 0.908327 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 31.467715 seconds.
+  path: Assets/Kai's Folder/Room 1.blend
+  artifactKey: Guid(0e48749eca67442c284096481685387b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Kai's Folder/Room 1.blend using Guid(0e48749eca67442c284096481685387b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a73784fbaa2ade378ea577d51a0a427') in 0.926495 seconds
+  Import took 0.933273 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 299.982485 seconds.
+  path: Assets/Kai's Folder/Room-Finished Peices.blend
+  artifactKey: Guid(ee836e24997a646a3894d550f63be888) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Kai's Folder/Room-Finished Peices.blend using Guid(ee836e24997a646a3894d550f63be888) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f79be26558382fff39efb53ad9e1fac5') in 0.377562 seconds
+  Import took 0.383468 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 57.850944 seconds.
+  path: Assets/Kai's Folder/Room-Finished Peices.blend
+  artifactKey: Guid(ee836e24997a646a3894d550f63be888) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Kai's Folder/Room-Finished Peices.blend using Guid(ee836e24997a646a3894d550f63be888) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de8895ba1601600e5bce7e4246ea3d56') in 0.400071 seconds
+  Import took 0.407393 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 401.631960 seconds.
+  path: Assets/Kai's Folder/Room-Finished Peices.blend
+  artifactKey: Guid(ee836e24997a646a3894d550f63be888) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Kai's Folder/Room-Finished Peices.blend using Guid(ee836e24997a646a3894d550f63be888) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5fd8d02258bb3250b222ea2b64037cd') in 0.421281 seconds
+  Import took 0.428221 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 130.217570 seconds.
+  path: Assets/SkyboxTest.mat
+  artifactKey: Guid(a92c11340e70440279d5e376b17e292c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkyboxTest.mat using Guid(a92c11340e70440279d5e376b17e292c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f5eb3b4b28f1dc99dae52bba7872c4c') in 0.247924 seconds
+  Import took 0.253651 seconds .
+
