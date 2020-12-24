@@ -7,14 +7,18 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody rb;
     public float speed;
+    public float jumpPower;
+    public float maxSpeed;
+
+    
     
 
-    public GameObject characterModel;
+    public GameObject characterModelObj;
     public Camera mainCamera;
 
     public float characterRotationSpeed;
-    Quaternion cameraAngle;
-    Vector3 cameraAngleEuler;
+    Quaternion velocityAngle;
+    Vector3 velocityAngleEuler;
     Quaternion angleToRotateTo;
 
 
@@ -23,60 +27,63 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerAnimator = GetComponent<Animator>();
+        playerAnimator = characterModelObj.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //Movement
-        if(Input.GetKey(KeyCode.W))
+        if(rb.velocity.magnitude < maxSpeed)
         {
-            rb.AddForce(transform.forward * speed);
-            playerAnimator.SetBool("isRunning", true);
+            if(Input.GetKey(KeyCode.W))
+            {
+                rb.AddForce(new Vector3(0, 0, 1) * speed);
+                playerAnimator.SetBool("isRunning", true);
+            }
+            else if(Input.GetKey(KeyCode.S))
+            {
+                rb.AddForce(new Vector3(0, 0, -1) * speed);
+                playerAnimator.SetBool("isRunning", true);
+            }
+            else if(Input.GetKey(KeyCode.A))
+            {
+                rb.AddForce(new Vector3(-1, 0, 0) * speed);
+                playerAnimator.SetBool("isRunning", true);
+            }
+            else if(Input.GetKey(KeyCode.D))
+            {
+                rb.AddForce(new Vector3(1, 0, 0) * speed);
+                playerAnimator.SetBool("isRunning", true);
+            }
+            else
+            {
+                playerAnimator.SetBool("isRunning", false);
+            }
         }
-        else if(Input.GetKey(KeyCode.S))
+            
+
+        //Jump
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(-transform.forward * speed);
-            playerAnimator.SetBool("isRunning", true);
+            rb.AddForce(new Vector3(0, 1, 0) * jumpPower, ForceMode.Impulse);
         }
-        else if(Input.GetKey(KeyCode.A))
+
+
+        //Rotate model with velocity vector
+
+        //get angle of the velocity
+        Debug.Log(rb.velocity.magnitude);
+        if(rb.velocity.magnitude > 0.1f)
         {
-            rb.AddForce(-transform.right * speed);
-            playerAnimator.SetBool("isRunning", true);
+            velocityAngle = Quaternion.LookRotation(rb.velocity);
+            velocityAngleEuler = velocityAngle.eulerAngles;
+
+            angleToRotateTo = Quaternion.Euler(0, velocityAngleEuler.y, 0);
+            
+            //apply character rotation
+            characterModelObj.transform.rotation = Quaternion.Slerp(characterModelObj.transform.rotation, angleToRotateTo, characterRotationSpeed);
         }
-        else if(Input.GetKey(KeyCode.D))
-        {
-            rb.AddForce(transform.right * speed);
-            playerAnimator.SetBool("isRunning", true);
-        }
-        else
-        {
-            playerAnimator.SetBool("isRunning", false);
-        }
-
-        
-
-        //Rotate model with Camera
-
-        //get angle camera is looking at
-        cameraAngle = Quaternion.LookRotation(mainCamera.transform.forward);
-
-
-        cameraAngleEuler = cameraAngle.eulerAngles;
-
-
-        angleToRotateTo = Quaternion.Euler(0, cameraAngleEuler.y, 0);
-
-        //apply character rotation
-        characterModel.transform.rotation = Quaternion.Slerp(characterModel.transform.rotation, angleToRotateTo, characterRotationSpeed);
-        
-
-        //Debug.Log(cameraAngle.eulerAngles);
-
-
-
-
 
     }
 }
