@@ -4,63 +4,73 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    public Rigidbody rb;
+    
     public float speed;
-    public float jumpPower;
     public float maxSpeed;
-
+    public float jumpPower;
     
-    
+    public float rotationSpeed;
 
-    public GameObject characterModelObj;
+    GameObject playerObj;
+    Rigidbody rb;
+    Animator playerAnimator;
+
     public Camera mainCamera;
 
-    public float characterRotationSpeed;
     Quaternion velocityAngle;
     Vector3 velocityAngleEuler;
     Quaternion angleToRotateTo;
 
+    float xzVelMag;
 
-    Animator playerAnimator;
+    
 
-    // Start is called before the first frame update
     void Start()
     {
-        playerAnimator = characterModelObj.GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+        playerAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         //Movement
-        if(rb.velocity.magnitude < maxSpeed)
+
+        //Finds the speed in the xy directions - jumping can be faster than maxSpeed
+        xzVelMag = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z);
+        Debug.Log(xzVelMag);
+        
+        if(xzVelMag < maxSpeed)
         {
             if(Input.GetKey(KeyCode.W))
             {
                 rb.AddForce(new Vector3(0, 0, 1) * speed);
-                playerAnimator.SetBool("isRunning", true);
             }
-            else if(Input.GetKey(KeyCode.S))
+            if(Input.GetKey(KeyCode.S))
             {
                 rb.AddForce(new Vector3(0, 0, -1) * speed);
-                playerAnimator.SetBool("isRunning", true);
             }
-            else if(Input.GetKey(KeyCode.A))
+            if(Input.GetKey(KeyCode.A))
             {
                 rb.AddForce(new Vector3(-1, 0, 0) * speed);
-                playerAnimator.SetBool("isRunning", true);
             }
-            else if(Input.GetKey(KeyCode.D))
+            if(Input.GetKey(KeyCode.D))
             {
                 rb.AddForce(new Vector3(1, 0, 0) * speed);
-                playerAnimator.SetBool("isRunning", true);
-            }
-            else
-            {
-                playerAnimator.SetBool("isRunning", false);
             }
         }
+
+        if(rb.velocity.magnitude > 0)
+        {
+            playerAnimator.SetBool("isRunning", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("isRunning", false);
+        }
+
+
+        //Edits speed to change as speed of player changes
+        playerAnimator.speed = (rb.velocity.magnitude) / maxSpeed;
             
 
         //Jump
@@ -70,10 +80,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        //Rotate model with velocity vector
-
-        //get angle of the velocity
-        Debug.Log(rb.velocity.magnitude);
+        //Rotate player to the velocity vector
         if(rb.velocity.magnitude > 0.1f)
         {
             velocityAngle = Quaternion.LookRotation(rb.velocity);
@@ -82,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
             angleToRotateTo = Quaternion.Euler(0, velocityAngleEuler.y, 0);
             
             //apply character rotation
-            characterModelObj.transform.rotation = Quaternion.Slerp(characterModelObj.transform.rotation, angleToRotateTo, characterRotationSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, angleToRotateTo, rotationSpeed);
         }
 
     }
