@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Finds the speed in the xy directions - jumping can be faster than maxSpeed
         xzVelMag = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z);
-        Debug.Log(xzVelMag);
+        //Debug.Log(xzVelMag);
         
         if(xzVelMag < maxSpeed)
         {
